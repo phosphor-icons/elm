@@ -1,16 +1,19 @@
 {
-  "name": "phosphor-elm-generator",
-  "version": "2.1.0",
-  "author": "rektdeckard",
-  "license": "MIT",
-  "devDependencies": {
-    "@types/node": "18",
-    "chalk": "^4.1.2",
-    "svgson": "^5.2.1",
-    "typescript": "^5.4.3"
-  },
-  "private": true,
-  "scripts": {
-    "generate": "npx tsx scripts/generate.ts"
-  }
+    "name": "phosphor-elm-generator",
+    "version": "2.1.0",
+    "author": "rektdeckard",
+    "license": "MIT",
+    "devDependencies": {
+        "@types/node": "18",
+        "chalk": "^4.1.2",
+        "elm": "^0.19.1-6",
+        "elm-codegen": "^0.6.1",
+        "elm-format": "^0.8.7",
+        "svgson": "^5.2.1",
+        "typescript": "^5.4.3"
+    },
+    "private": true,
+    "scripts": {
+        "generate": "(test -f node_modules/.bin/elm-codegen || yarn) && (test -f codegen/Gen/Basics.elm || elm-codegen install) && rm -rf src && elm-codegen run --flags-from core/assets --output src && elm-format --yes src"
+    }
 }
